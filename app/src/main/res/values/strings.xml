@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">SchoolTimetable</string>
+
+    <!--Menu-->
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+
+    <!--Drawer Contents-->
+    <string name="home">Home</string>
+    <string name="class_info_list">Class list</string>
+    <string name="settings">Settings</string>
+
+    <!--Info Contents-->
+    <string name="subject">Subject</string>
+    <string name="classroom">Classroom</string>
+    <string name="teacher">Teacher</string>
+    <string name="memo">Memo</string>
+    <string name="color">Color</string>
+    <string name="select_color">Select subject color</string>
+    <string name="delete_class_info_title">Delete subject</string>
+    <string name="delete_class_info_text">Do you want to delete this subject?</string>
+
+    <!--Class Info Contents-->
+    <string name="edit">Edit</string>
+    <string name="add">Add Subject</string>
+
+    <!--Class Time Contents-->
+    <string name="class_time">Class time</string>
+    <string name="start_time">Start time</string>
+    <string name="end_time">End time</string>
+    <string name="save">Save</string>
+
+    <!--Settings Contents-->
+    <string name="timetable">Timetable</string>
+
+    <string name="day_of_week">Time of the day to display</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sun">Sun</string>
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+
+    <string name="period">Periods to display</string>
+    <string name="first">1st Period</string>
+    <string name="second">2nd Period</string>
+    <string name="third">3rd Period</string>
+    <string name="forth">4th Period</string>
+    <string name="fifth">5th Period</string>
+    <string name="sixth">6th Period</string>
+    <string name="seventh">7th Period</string>
+
+    <string name="general">General</string>
+
+    <string name="theme">Theme</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="light_theme">Light Theme</string>
+    <string name="default_theme">System Default</string>
+</resources>
