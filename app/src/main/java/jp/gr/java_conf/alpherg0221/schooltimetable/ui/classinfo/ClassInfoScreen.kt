@@ -1,10 +1,12 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfo
 
+import android.widget.Toast
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.CheckDialog
@@ -20,6 +22,8 @@ fun ClassInfoScreen(
 
     val scope = rememberCoroutineScope()
     val sheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+
+    val context = LocalContext.current
 
     ClassInfoContent(
         onBack = onBack,
@@ -46,6 +50,7 @@ fun ClassInfoScreen(
                 selected = uiState.color.toLong(),
                 onSelected = { color ->
                     scope.launch { sheetState.hide() }
+                    Toast.makeText(context, color, Toast.LENGTH_SHORT).show()
                     classInfoViewModel.setClassInfo(ClassInfoType.Color, color)
                 }
             )

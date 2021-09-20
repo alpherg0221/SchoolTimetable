@@ -69,7 +69,7 @@ fun Collection<DayOfWeekType>.toDayOfWeekString(): String {
     if (this.contains(DayOfWeekType.Thu)) str.append("${stringResource(id = R.string.thu)}, ")
     if (this.contains(DayOfWeekType.Fri)) str.append("${stringResource(id = R.string.fri)}, ")
     if (this.contains(DayOfWeekType.Sat)) str.append("${stringResource(id = R.string.sat)}, ")
-    if (str.endsWith(", ")) str.delete(str.lastIndex -1, str.lastIndex)
+    if (str.endsWith(", ")) str.delete(str.lastIndex - 1, str.lastIndex)
     return str.toString()
 }
 
@@ -83,7 +83,7 @@ fun Collection<PeriodType>.toPeriodString(): String {
     if (this.contains(PeriodType.Fifth)) str.append("5, ")
     if (this.contains(PeriodType.Sixth)) str.append("6, ")
     if (this.contains(PeriodType.Seventh)) str.append("7, ")
-    if (str.endsWith(", ")) str.delete(str.lastIndex -1, str.lastIndex)
+    if (str.endsWith(", ")) str.delete(str.lastIndex - 1, str.lastIndex)
     return str.toString()
 }
 
@@ -104,4 +104,10 @@ fun Collection<ClassTime>.toComplement(): List<ClassTime> {
     return pairList
 }
 
-fun localContentColorFor(color: Long): Color = Color(OnColorValueList[ColorValueList.indexOf(color)])
+fun localContentColorFor(color: Long): Color {
+    return try {
+        Color(OnColorValueList[ColorValueList.indexOf(color)])
+    } catch (e: Throwable) {
+        Color.Transparent
+    }
+}

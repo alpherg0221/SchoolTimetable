@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.BottomSheetLayout
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.theme.ColorList
+import jp.gr.java_conf.alpherg0221.schooltimetable.ui.theme.ColorValueList
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.theme.OnColorList
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -59,7 +60,7 @@ fun ColorButton(
 ) {
     Surface(
         modifier = Modifier
-            .clickable { onSelected(color.toArgb().toString()) }
+            .clickable { onSelected(ColorValueList[ColorList.indexOf(color)].toString()) }
             .requiredSizeIn(36.dp, 36.dp, 36.dp, 36.dp),
         shape = CircleShape,
         color = color,
