@@ -5,10 +5,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.AppTheme
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.settings.SettingsRepository
-import jp.gr.java_conf.alpherg0221.schooltimetable.data.timetable.TimetableRepository
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.DayOfWeekType
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.PeriodType
-import jp.gr.java_conf.alpherg0221.schooltimetable.utils.toDayOfWeekString
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
