@@ -41,7 +41,7 @@ class ClassInfoListSelectViewModel(
             period: PeriodType
         ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
-            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return ClassInfoListSelectViewModel(
                     timetableRepository = timetableRepository,
                     dayOfWeek = dayOfWeek,

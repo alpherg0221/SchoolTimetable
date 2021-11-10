@@ -1,11 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     ext {
-        kotlin_version = '1.5.30'
-        coroutines_version = '1.5.1'
-        compose_version = '1.1.0-alpha04'
-        lifecycle_version = '2.3.1'
-        accompanist_version = '0.19.0'
+        kotlin_version = '1.5.31'
+        coroutines_version = '1.5.2'
+        compose_version = '1.1.0-beta02'
+        lifecycle_version = '2.4.0'
+        accompanist_version = '0.21.0-beta'
         room_version = '2.3.0'
     }
     repositories {
@@ -13,8 +13,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0-alpha01'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.30"
+        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
         classpath 'com.google.android.gms:oss-licenses-plugin:0.10.4'
 
         // NOTE: Do not place your application dependencies here; they belong

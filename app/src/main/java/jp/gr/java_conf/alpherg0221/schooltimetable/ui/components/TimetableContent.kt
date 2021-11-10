@@ -78,8 +78,8 @@ fun ClassItem(
         contentColor = tableWithClassInfo?.color?.let { localContentColorFor(it.toLong()) }
             ?: Color.Transparent,
         border = BorderStroke(
-            width = (0.5).dp,
-            color = MaterialTheme.colors.onSurface.copy(alpha = .5f)
+            width = (0.25).dp,
+            color = MaterialTheme.colors.onSurface
         ),
     ) {
         Column(

@@ -16,13 +16,21 @@ fun InsetAwareTopAppBar(
     modifier: Modifier = Modifier,
     navigationIcon: @Composable (() -> Unit),
     actions: @Composable RowScope.() -> Unit = {},
-    backgroundColor: Color = MaterialTheme.colors.primarySurface,
+    backgroundColor: Color = MaterialTheme.colors.surface,
     contentColor: Color = contentColorFor(backgroundColor),
     elevation: Dp = 4.dp
 ) {
+    val elevationOverlay = LocalElevationOverlay.current
+    val absoluteElevation = LocalAbsoluteElevation.current + elevation
+    val newBackgroundColor = if (backgroundColor == MaterialTheme.colors.surface && elevationOverlay != null) {
+        elevationOverlay.apply(backgroundColor, absoluteElevation)
+    } else {
+        backgroundColor
+    }
+
     Surface(
-        color = backgroundColor,
-        elevation = elevation,
+        color = newBackgroundColor,
+        elevation = 0.dp,
         modifier = modifier,
     ) {
         TopAppBar(

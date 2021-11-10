@@ -27,14 +27,14 @@ fun TimetableLayout(
     ConstraintLayout(modifier = Modifier.fillMaxSize()) {
         val (space, row, column, contents) = createRefs()
 
-        BorderSurface(
+        Surface(
             modifier = Modifier
-                .size(width = 40.dp, height = 40.dp)
+                .size(width = 40.dp, height = 30.dp)
                 .constrainAs(space) {
                     top.linkTo(parent.top)
                     start.linkTo(parent.start)
                 },
-            width = 1.dp,
+            content = {}
         )
 
         Column(
@@ -56,7 +56,7 @@ fun TimetableLayout(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp)
+                .height(30.dp)
                 .constrainAs(row) { start.linkTo(space.end) }
         ) {
             dayOfWeekList.forEach { dayOfWeek ->
@@ -84,7 +84,7 @@ fun DayOfWeekItem(
     modifier: Modifier = Modifier,
     dayOfWeek: String
 ) {
-    BorderSurface(modifier = modifier, width = (0.5).dp) {
+    Surface(modifier = modifier) {
         Box(contentAlignment = Alignment.Center) {
             Text(text = dayOfWeek)
         }
@@ -98,7 +98,7 @@ fun PeriodItem(
     end: String = "",
     period: Int,
 ) {
-    BorderSurface(modifier = modifier, width = (0.5).dp) {
+    BorderSurface(modifier = modifier, width = (0.25).dp) {
         Column(
             verticalArrangement = Arrangement.SpaceAround,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -120,7 +120,7 @@ fun BorderSurface(
         modifier = modifier,
         border = BorderStroke(
             width = width,
-            color = MaterialTheme.colors.onSurface.copy(alpha = .5f)
+            color = MaterialTheme.colors.onSurface
         ),
         content = content,
     )
@@ -133,7 +133,11 @@ fun TimeCard(time: String) {
         modifier = Modifier.size(width = 32.dp, height = 18.dp)
     ) {
         Box(contentAlignment = Alignment.Center) {
-            Text(text = time, fontSize = 12.sp)
+            Text(
+                text = time,
+                fontSize = 12.sp,
+                color = contentColorFor(MaterialTheme.colors.primary)
+            )
         }
     }
 }

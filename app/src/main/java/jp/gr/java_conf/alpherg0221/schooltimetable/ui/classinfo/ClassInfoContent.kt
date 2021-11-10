@@ -1,15 +1,10 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfo
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
@@ -22,13 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.input.key.*
-import androidx.compose.ui.layout.RelocationRequester
-import androidx.compose.ui.layout.relocationRequester
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -149,7 +142,7 @@ fun ClassInfoContent(
     }
 }
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class,)
 @Composable
 fun ClassInfoInputField(
     icon: ImageVector,
@@ -159,7 +152,7 @@ fun ClassInfoInputField(
     onValueChange: (String) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
-    val relocationRequester = remember { RelocationRequester() }
+    val bringIntoViewRequester = remember { BringIntoViewRequester() }
 
     Row(
         modifier = Modifier
@@ -177,10 +170,10 @@ fun ClassInfoInputField(
         OutlinedTextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .relocationRequester(relocationRequester)
+                .bringIntoViewRequester(bringIntoViewRequester)
                 .onFocusEvent {
                     if (it.isFocused) {
-                        scope.launch { relocationRequester.bringIntoView() }
+                        scope.launch { bringIntoViewRequester.bringIntoView() }
                     }
                 },
             value = value,
