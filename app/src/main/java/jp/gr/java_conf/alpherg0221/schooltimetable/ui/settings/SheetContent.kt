@@ -4,6 +4,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -63,50 +64,56 @@ fun SelectThemeSheet(
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun CheckboxItem(
     label: String,
     checked: Boolean,
     onChecked: () -> Unit = {},
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onChecked() }
-            .padding(horizontal = 24.dp, vertical = 12.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Checkbox(
-            checked = checked,
-            onCheckedChange = { onChecked() },
-        )
-        Text(
-            text = label,
-            modifier = Modifier.padding(start = 18.dp)
-        )
+    CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onChecked() }
+                .padding(horizontal = 24.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Checkbox(
+                checked = checked,
+                onCheckedChange = { onChecked() },
+            )
+            Text(
+                text = label,
+                modifier = Modifier.padding(start = 18.dp)
+            )
+        }
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun RadioButtonItem(
     label: String,
     selected: Boolean,
     onChecked: () -> Unit = {},
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onChecked() }
-            .padding(horizontal = 24.dp, vertical = 18.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        RadioButton(
-            selected = selected,
-            onClick = onChecked,
-        )
-        Text(
-            text = label,
-            modifier = Modifier.padding(start = 18.dp)
-        )
+    CompositionLocalProvider(LocalMinimumTouchTargetEnforcement provides false) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .clickable { onChecked() }
+                .padding(horizontal = 24.dp, vertical = 18.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            RadioButton(
+                selected = selected,
+                onClick = onChecked,
+            )
+            Text(
+                text = label,
+                modifier = Modifier.padding(start = 18.dp)
+            )
+        }
     }
 }
