@@ -1,4 +1,4 @@
-package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfolist.edit
+package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.edit
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -6,14 +6,14 @@ import androidx.compose.runtime.getValue
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfo.ClassInfoActionMode
 
 @Composable
-fun ClassInfoListEditScreen(
-    classInfoListEditViewModel: ClassInfoListEditViewModel,
+fun ClassListEditScreen(
+    classListEditViewModel: ClassListEditViewModel,
     onBack: () -> Unit = {},
     navigateToClassInfo: (ClassInfoActionMode, String) -> Unit,
 ) {
-    val classInfoList by classInfoListEditViewModel.classInfoList.collectAsState()
+    val classInfoList by classListEditViewModel.classInfoList.collectAsState()
 
-    ClassInfoListEditContent(
+    ClassListEditContent(
         onBack = onBack,
         classInfoList = classInfoList,
         onListClick = { subject ->

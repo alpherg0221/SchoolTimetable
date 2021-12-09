@@ -1,4 +1,4 @@
-package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfolist.select
+package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.edit
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,7 +8,9 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
+import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.Circle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,20 +24,16 @@ import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.PreferencesItem
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ClassInfoListSelectContent(
+fun ClassListEditContent(
     onBack: () -> Unit = {},
     classInfoList: List<ClassInfo>,
-    dayOfWeek: String,
-    period: String,
-    selectedSubject: String = "",
     onListClick: (String) -> Unit,
-    addSubject: () -> Unit = {},
-    deleteSubject: () -> Unit = {},
+    onAddClick: () -> Unit
 ) {
     Scaffold(
         topBar = {
             InsetAwareTopAppBar(
-                title = { Text(text = "$dayOfWeek $period") },
+                title = { Text(text = stringResource(id = R.string.class_info_list)) },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(imageVector = Icons.Rounded.ArrowBack, contentDescription = null)
@@ -48,14 +46,8 @@ fun ClassInfoListSelectContent(
             stickyHeader {
                 PreferencesItem(
                     title = stringResource(id = R.string.add),
-                    onClick = addSubject,
+                    onClick = onAddClick,
                     icon = Icons.Rounded.Add
-                )
-                AppDivider()
-                PreferencesItem(
-                    title = stringResource(id = R.string.delete),
-                    onClick = deleteSubject,
-                    icon = Icons.Rounded.Delete,
                 )
                 AppDivider()
             }
@@ -64,11 +56,7 @@ fun ClassInfoListSelectContent(
                     title = classInfo.subject,
                     subtitle = "${classInfo.classroom ?: ""} / ${classInfo.teacher ?: ""}",
                     onClick = { onListClick(classInfo.subject) },
-                    icon = if (selectedSubject == classInfo.subject) {
-                        Icons.Rounded.CheckCircleOutline
-                    } else {
-                        Icons.Rounded.Circle
-                    },
+                    icon = Icons.Rounded.Circle,
                     color = classInfo.color?.let { Color(it.toLong()) } ?: Color.Transparent,
                 )
                 AppDivider()

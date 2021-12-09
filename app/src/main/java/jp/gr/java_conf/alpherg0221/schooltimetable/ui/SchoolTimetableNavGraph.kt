@@ -17,10 +17,10 @@ import jp.gr.java_conf.alpherg0221.schooltimetable.model.PeriodType
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfo.ClassInfoActionMode
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfo.ClassInfoScreen
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfo.ClassInfoViewModel
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfolist.edit.ClassInfoListEditScreen
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfolist.edit.ClassInfoListEditViewModel
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfolist.select.ClassInfoListSelectScreen
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfolist.select.ClassInfoListSelectViewModel
+import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.edit.ClassListEditScreen
+import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.edit.ClassListEditViewModel
+import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.select.ClassListSelectScreen
+import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.select.ClassListSelectViewModel
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classtime.ClassTimeScreen
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classtime.ClassTimeViewModel
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.home.HomeScreen
@@ -106,15 +106,15 @@ fun SchoolTimetableNavGraph(
         composable(
             "${MainDestinations.CLASS_INFO_LIST_SELECT_ROUTE}/{dayOfWeek}/{period}"
         ) { backStackEntry ->
-            val classInfoListSelectViewModel: ClassInfoListSelectViewModel = viewModel(
-                factory = ClassInfoListSelectViewModel.provideFactory(
+            val classListSelectViewModel: ClassListSelectViewModel = viewModel(
+                factory = ClassListSelectViewModel.provideFactory(
                     timetableRepository = appContainer.timetableRepository,
                     dayOfWeek = DayOfWeekType.valueOf(backStackEntry.arguments?.getString("dayOfWeek")!!),
                     period = PeriodType.valueOf(backStackEntry.arguments?.getString("period")!!),
                 )
             )
-            ClassInfoListSelectScreen(
-                classInfoListSelectViewModel = classInfoListSelectViewModel,
+            ClassListSelectScreen(
+                classListSelectViewModel = classListSelectViewModel,
                 onBack = actions.upPress,
                 navigateToClassInfo = { type, subject ->
                     navController.navigate("${MainDestinations.CLASS_INFO_ROUTE}/${type.name}/$subject")
@@ -123,13 +123,13 @@ fun SchoolTimetableNavGraph(
         }
 
         composable(MainDestinations.CLASS_INFO_LIST_EDIT_ROUTE) {
-            val classInfoListEditViewModel: ClassInfoListEditViewModel = viewModel(
-                factory = ClassInfoListEditViewModel.provideFactory(
+            val classListEditViewModel: ClassListEditViewModel = viewModel(
+                factory = ClassListEditViewModel.provideFactory(
                     timetableRepository = appContainer.timetableRepository,
                 )
             )
-            ClassInfoListEditScreen(
-                classInfoListEditViewModel = classInfoListEditViewModel,
+            ClassListEditScreen(
+                classListEditViewModel = classListEditViewModel,
                 onBack = actions.upPress,
                 navigateToClassInfo = { type, subject ->
                     navController.navigate("${MainDestinations.CLASS_INFO_ROUTE}/${type.name}/$subject")

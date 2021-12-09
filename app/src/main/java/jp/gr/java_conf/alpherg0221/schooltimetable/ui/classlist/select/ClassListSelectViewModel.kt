@@ -1,4 +1,4 @@
-package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfolist.select
+package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.select
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -10,7 +10,7 @@ import jp.gr.java_conf.alpherg0221.schooltimetable.model.PeriodType
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class ClassInfoListSelectViewModel(
+class ClassListSelectViewModel(
     private val timetableRepository: TimetableRepository,
     val dayOfWeek: DayOfWeekType,
     val period: PeriodType,
@@ -42,7 +42,7 @@ class ClassInfoListSelectViewModel(
         ): ViewModelProvider.Factory = object : ViewModelProvider.Factory {
             @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return ClassInfoListSelectViewModel(
+                return ClassListSelectViewModel(
                     timetableRepository = timetableRepository,
                     dayOfWeek = dayOfWeek,
                     period = period,
