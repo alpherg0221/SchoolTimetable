@@ -9,6 +9,7 @@
     <string name="home">Home</string>
     <string name="class_info_list">Class list</string>
     <string name="settings">Settings</string>
+    <string name="info">About this app</string>
 
     <!--Info Contents-->
     <string name="subject">Subject</string>
@@ -64,4 +65,11 @@
     <string name="dark_theme">Dark Theme</string>
     <string name="light_theme">Light Theme</string>
     <string name="default_theme">System Default</string>
+
+    <!--App Info Content -->
+    <string name="version">Version</string>
+    <string name="version_sub">1.0.0</string>
+    <string name="oss">Open source licenses</string>
+    <string name="oss_sub">License details for open source software</string>
+    <string name="privacy_policy">Privacy Policy</string>
 </resources>

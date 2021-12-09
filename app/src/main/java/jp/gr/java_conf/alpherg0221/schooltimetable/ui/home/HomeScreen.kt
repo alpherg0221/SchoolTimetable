@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 fun HomeScreen(
     homeViewModel: HomeViewModel,
     openDrawer: () -> Unit,
-    navigateToClassInfoListSelect: (DayOfWeekType, PeriodType) -> Unit,
+    navigateToClassListSelect: (DayOfWeekType, PeriodType) -> Unit,
     navigateToClassInfo: (ClassInfoActionMode, String) -> Unit,
 ) {
     val scope = rememberCoroutineScope()
@@ -54,7 +54,7 @@ fun HomeScreen(
                 onEdit = {
                     scope.launch { sheetState.hide() }
                     uiState.bottomSheet?.let {
-                        navigateToClassInfoListSelect(
+                        navigateToClassListSelect(
                             DayOfWeekType.valueOf(it.dayOfWeek),
                             PeriodType.valueOf(it.period),
                         )

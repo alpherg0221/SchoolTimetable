@@ -2,9 +2,7 @@ package jp.gr.java_conf.alpherg0221.schooltimetable.ui
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,42 +39,43 @@ fun SchoolTimetableApp(
             }
 
             val navController = rememberAnimatedNavController()
+            val navigationActions = remember(navController) {
+                MainActions(navController)
+            }
+
             val scope = rememberCoroutineScope()
-            val scaffoldState = rememberScaffoldState()
 
             val navBackStackEntry by navController.currentBackStackEntryAsState()
             val currentRoute = navBackStackEntry?.destination?.route ?: MainDestinations.HOME_ROUTE
 
+            val drawerState = rememberDrawerState(DrawerValue.Closed)
+
             BackHandler(
-                enabled = scaffoldState.drawerState.isOpen,
-                onBack = { scope.launch { scaffoldState.drawerState.close() } }
+                enabled = drawerState.isOpen,
+                onBack = { scope.launch { drawerState.close() } }
             )
 
-            Scaffold(
-                modifier = Modifier.navigationBarsPadding(),
-                scaffoldState = scaffoldState,
+            ModalDrawer(
                 drawerContent = {
                     AppDrawer(
                         currentRoute = currentRoute,
-                        navigateToHome = {
-                            navController.navigate(MainDestinations.HOME_ROUTE)
-                        },
-                        navigateToClassInfoListEdit = {
-                            navController.navigate(MainDestinations.CLASS_INFO_LIST_EDIT_ROUTE)
-                        },
-                        navigateToSettings = {
-                            navController.navigate(MainDestinations.SETTINGS_ROUTE)
-                        },
-                        closeDrawer = { scope.launch { scaffoldState.drawerState.close() } }
+                        navigateToHome = navigationActions.navigateToHome,
+                        navigateToClassListEdit = navigationActions.navigateToClassListEdit,
+                        navigateToSettings = navigationActions.navigateToSettings,
+                        navigateToAppInfo = navigationActions.navigateToAppInfo,
+                        closeDrawer = { scope.launch { drawerState.close() } }
                     )
                 },
-                drawerGesturesEnabled = currentRoute == MainDestinations.HOME_ROUTE
-
+                modifier = Modifier.navigationBarsPadding(),
+                drawerState = drawerState,
+                gesturesEnabled = currentRoute == MainDestinations.HOME_ROUTE
             ) {
                 SchoolTimetableNavGraph(
                     appContainer = appContainer,
                     navController = navController,
-                    scaffoldState = scaffoldState,
+                    openDrawer =  { scope.launch { drawerState.open() } },
+                    onBack = navigationActions.onBack,
+                    navigationActions = navigationActions
                 )
             }
         }
