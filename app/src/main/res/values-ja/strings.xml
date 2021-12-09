@@ -9,6 +9,7 @@
     <string name="home">ホーム</string>
     <string name="class_info_list">授業リスト</string>
     <string name="settings">設定</string>
+    <string name="info">このアプリについて</string>
 
     <!--Info Contents-->
     <string name="subject">科目</string>
@@ -64,4 +65,11 @@
     <string name="dark_theme">ダークテーマ</string>
     <string name="light_theme">ライトテーマ</string>
     <string name="default_theme">システムのデフォルト</string>
+
+    <!--App Info Content -->
+    <string name="version">バージョン</string>
+    <string name="version_sub">1.0.0</string>
+    <string name="oss">オープンソースライセンス</string>
+    <string name="oss_sub">License details for open source software</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
 </resources>

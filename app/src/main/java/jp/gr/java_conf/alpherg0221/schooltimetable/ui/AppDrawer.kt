@@ -5,21 +5,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.rounded.DateRange
-import androidx.compose.material.icons.rounded.FormatListBulleted
-import androidx.compose.material.icons.rounded.Home
-import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
@@ -30,8 +23,9 @@ import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.DrawerButton
 fun AppDrawer(
     currentRoute: String,
     navigateToHome: () -> Unit,
-    navigateToClassInfoListEdit: () -> Unit,
+    navigateToClassListEdit: () -> Unit,
     navigateToSettings: () -> Unit,
+    navigateToAppInfo: () -> Unit,
     closeDrawer: () -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
@@ -47,21 +41,33 @@ fun AppDrawer(
                 closeDrawer()
             }
         )
+
         DrawerButton(
             icon = Icons.Rounded.FormatListBulleted,
             label = stringResource(R.string.class_info_list),
-            isSelected = currentRoute == MainDestinations.CLASS_INFO_LIST_EDIT_ROUTE,
+            isSelected = currentRoute == MainDestinations.CLASS_LIST_EDIT_ROUTE,
             action = {
-                navigateToClassInfoListEdit()
+                navigateToClassListEdit()
                 closeDrawer()
             }
         )
+
         DrawerButton(
             icon = Icons.Rounded.Settings,
             label = stringResource(R.string.settings),
             isSelected = currentRoute == MainDestinations.SETTINGS_ROUTE,
             action = {
                 navigateToSettings()
+                closeDrawer()
+            }
+        )
+
+        DrawerButton(
+            icon = Icons.Rounded.Info,
+            label = stringResource(R.string.info),
+            isSelected = currentRoute == MainDestinations.APP_INFO_ROUTE,
+            action = {
+                navigateToAppInfo()
                 closeDrawer()
             }
         )

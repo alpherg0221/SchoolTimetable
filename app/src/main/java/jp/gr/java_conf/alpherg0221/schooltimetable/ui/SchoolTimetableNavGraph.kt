@@ -1,11 +1,7 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui
 
 import androidx.compose.animation.*
-import androidx.compose.material.ScaffoldState
-import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.navigation.animation.AnimatedNavHost
@@ -25,31 +21,22 @@ import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classtime.ClassTimeScreen
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.classtime.ClassTimeViewModel
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.home.HomeScreen
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.home.HomeViewModel
+import jp.gr.java_conf.alpherg0221.schooltimetable.ui.info.InfoScreen
+import jp.gr.java_conf.alpherg0221.schooltimetable.ui.info.InfoViewModel
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.settings.SettingsScreen
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.settings.SettingsViewModel
-import kotlinx.coroutines.launch
 
-object MainDestinations {
-    const val HOME_ROUTE = "home"
-    const val SETTINGS_ROUTE = "settings"
-    const val CLASS_TIME_ROUTE = "class_time"
-    const val CLASS_INFO_LIST_SELECT_ROUTE = "class_info_list_select"
-    const val CLASS_INFO_LIST_EDIT_ROUTE = "class_info_list_edit"
-    const val CLASS_INFO_ROUTE = "class_info"
-}
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun SchoolTimetableNavGraph(
     appContainer: AppContainer,
     navController: NavHostController = rememberAnimatedNavController(),
-    scaffoldState: ScaffoldState = rememberScaffoldState(),
+    openDrawer: () -> Unit = {},
+    onBack: () -> Unit = {},
+    navigationActions: MainActions,
     startDestination: String = MainDestinations.HOME_ROUTE,
 ) {
-    val actions = remember(navController) { MainActions(navController) }
-    val coroutineScope = rememberCoroutineScope()
-    val openDrawer: () -> Unit = { coroutineScope.launch { scaffoldState.drawerState.open() } }
-
     AnimatedNavHost(
         navController = navController,
         startDestination = startDestination,
@@ -64,14 +51,8 @@ fun SchoolTimetableNavGraph(
             HomeScreen(
                 homeViewModel = homeViewModel,
                 openDrawer = openDrawer,
-                navigateToClassInfoListSelect = { dayOfWeek, period ->
-                    navController.navigate(
-                        "${MainDestinations.CLASS_INFO_LIST_SELECT_ROUTE}/${dayOfWeek.name}/${period.name}"
-                    )
-                },
-                navigateToClassInfo = { type, subject ->
-                    navController.navigate("${MainDestinations.CLASS_INFO_ROUTE}/${type.name}/$subject")
-                },
+                navigateToClassListSelect = navigationActions.navigateToClassListSelect,
+                navigateToClassInfo = navigationActions.navigateToClassInfo,
             )
         }
 
@@ -83,10 +64,20 @@ fun SchoolTimetableNavGraph(
             )
             SettingsScreen(
                 settingsViewModel = settingsViewModel,
-                onBack = actions.upPress,
-                navigateToClassTime = { period ->
-                    navController.navigate("${MainDestinations.CLASS_TIME_ROUTE}/${period.name}")
-                }
+                onBack = onBack,
+                navigateToClassTime = navigationActions.navigateToClassTime,
+            )
+        }
+
+        composable(MainDestinations.APP_INFO_ROUTE) {
+            val infoViewModel: InfoViewModel = viewModel(
+                factory = InfoViewModel.provideFactory()
+            )
+            InfoScreen(
+                infoViewModel = infoViewModel,
+                navigateToOSS = navigationActions.navigateToOSS,
+                navigateToPrivacyPolicy = navigationActions.navigateToPrivacyPolicy,
+                onBack = onBack,
             )
         }
 
@@ -99,12 +90,12 @@ fun SchoolTimetableNavGraph(
             )
             ClassTimeScreen(
                 classTimeViewModel = classTimeViewModel,
-                onBack = actions.upPress,
+                onBack = onBack,
             )
         }
 
         composable(
-            "${MainDestinations.CLASS_INFO_LIST_SELECT_ROUTE}/{dayOfWeek}/{period}"
+            "${MainDestinations.CLASS_LIST_SELECT_ROUTE}/{dayOfWeek}/{period}"
         ) { backStackEntry ->
             val classListSelectViewModel: ClassListSelectViewModel = viewModel(
                 factory = ClassListSelectViewModel.provideFactory(
@@ -115,14 +106,12 @@ fun SchoolTimetableNavGraph(
             )
             ClassListSelectScreen(
                 classListSelectViewModel = classListSelectViewModel,
-                onBack = actions.upPress,
-                navigateToClassInfo = { type, subject ->
-                    navController.navigate("${MainDestinations.CLASS_INFO_ROUTE}/${type.name}/$subject")
-                },
+                onBack = onBack,
+                navigateToClassInfo = navigationActions.navigateToClassInfo,
             )
         }
 
-        composable(MainDestinations.CLASS_INFO_LIST_EDIT_ROUTE) {
+        composable(MainDestinations.CLASS_LIST_EDIT_ROUTE) {
             val classListEditViewModel: ClassListEditViewModel = viewModel(
                 factory = ClassListEditViewModel.provideFactory(
                     timetableRepository = appContainer.timetableRepository,
@@ -130,10 +119,8 @@ fun SchoolTimetableNavGraph(
             )
             ClassListEditScreen(
                 classListEditViewModel = classListEditViewModel,
-                onBack = actions.upPress,
-                navigateToClassInfo = { type, subject ->
-                    navController.navigate("${MainDestinations.CLASS_INFO_ROUTE}/${type.name}/$subject")
-                },
+                onBack = onBack,
+                navigateToClassInfo = navigationActions.navigateToClassInfo,
             )
         }
 
@@ -147,14 +134,8 @@ fun SchoolTimetableNavGraph(
             )
             ClassInfoScreen(
                 classInfoViewModel = classInfoViewModel,
-                onBack = actions.upPress,
+                onBack = onBack,
             )
         }
-    }
-}
-
-class MainActions(navController: NavHostController) {
-    val upPress: () -> Unit = {
-        navController.navigateUp()
     }
 }
