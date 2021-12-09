@@ -6,9 +6,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.insets.navigationBarsPadding
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.AppTheme
@@ -51,6 +53,7 @@ fun SchoolTimetableApp(
             )
 
             Scaffold(
+                modifier = Modifier.navigationBarsPadding(),
                 scaffoldState = scaffoldState,
                 drawerContent = {
                     AppDrawer(

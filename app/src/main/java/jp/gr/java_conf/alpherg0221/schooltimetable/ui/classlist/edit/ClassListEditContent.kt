@@ -3,19 +3,14 @@ package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classlist.edit
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.ArrowBack
 import androidx.compose.material.icons.rounded.Circle
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import com.google.accompanist.insets.navigationBarsPadding
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.ClassInfo
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.AppDivider
@@ -40,17 +35,14 @@ fun ClassListEditContent(
                     }
                 }
             )
+        },
+        floatingActionButton = {
+            FloatingActionButton(onClick = onAddClick) {
+                Icon(imageVector = Icons.Rounded.Add, contentDescription = null)
+            }
         }
     ) {
-        LazyColumn(modifier = Modifier.navigationBarsPadding()) {
-            stickyHeader {
-                PreferencesItem(
-                    title = stringResource(id = R.string.add),
-                    onClick = onAddClick,
-                    icon = Icons.Rounded.Add
-                )
-                AppDivider()
-            }
+        LazyColumn() {
             items(classInfoList) { classInfo ->
                 PreferencesItem(
                     title = classInfo.subject,

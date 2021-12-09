@@ -25,7 +25,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.accompanist.insets.navigationBarsPadding
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.BackHandler
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.ColorSurface
@@ -87,8 +86,6 @@ fun ClassInfoContent(
             if (showDialog) dialogContent()
 
             LazyColumn(
-                modifier = Modifier
-                    .navigationBarsPadding(),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {

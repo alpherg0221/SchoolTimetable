@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.google.accompanist.insets.navigationBarsPadding
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.ClassTime
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.TableWithClassInfo
@@ -52,7 +51,7 @@ fun HomeContent(
                 elevation = 4.dp,
             ) {
                 if (!loading) {
-                    BoxWithConstraints(modifier = Modifier.navigationBarsPadding()) {
+                    BoxWithConstraints {
                         TimetableLayout(
                             itemHeight = (maxHeight - 30.dp) / periodList.size,
                             itemWidth = (maxWidth - 40.dp) / dayOfWeekList.size,
