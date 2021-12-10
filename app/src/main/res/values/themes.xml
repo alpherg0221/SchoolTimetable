@@ -14,6 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.SchoolTimetable.Starting" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+        <item name="postSplashScreenTheme">@style/Theme.SchoolTimetable.NoActionBar</item>
+    </style>
+
     <style name="Theme.SchoolTimetable.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
