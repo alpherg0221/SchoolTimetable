@@ -5,5 +5,6 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
 rootProject.name = "SchoolTimetable"
-include ':app'
+include(":app")
