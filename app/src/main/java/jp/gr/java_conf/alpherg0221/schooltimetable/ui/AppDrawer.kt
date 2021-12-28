@@ -15,9 +15,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import jp.gr.java_conf.alpherg0221.compose.material.AppDivider
+import jp.gr.java_conf.alpherg0221.compose.material.DrawerButton
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.AppDivider
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.DrawerButton
 
 @Composable
 fun AppDrawer(

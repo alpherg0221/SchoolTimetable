@@ -1,8 +1,6 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui.home
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.*
@@ -12,10 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
+import jp.gr.java_conf.alpherg0221.compose.material.BottomSheetLayout
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.TableWithClassInfo
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.DayOfWeekType
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.PeriodType
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.BottomSheetLayout
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.ColorSurface
 import jp.gr.java_conf.alpherg0221.schooltimetable.utils.toLongString
 

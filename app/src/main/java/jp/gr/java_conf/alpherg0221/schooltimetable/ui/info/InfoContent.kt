@@ -11,9 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.google.accompanist.insets.navigationBarsPadding
+import jp.gr.java_conf.alpherg0221.compose.material.InsetAwareTopAppBar
+import jp.gr.java_conf.alpherg0221.compose.material.PreferencesItem
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.InsetAwareTopAppBar
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.PreferencesItem
 
 
 @Composable

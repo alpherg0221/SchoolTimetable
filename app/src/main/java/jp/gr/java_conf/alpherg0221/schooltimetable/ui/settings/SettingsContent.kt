@@ -1,6 +1,7 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui.settings
 
 import android.content.res.Configuration
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -13,6 +14,10 @@ import androidx.compose.material.icons.rounded.Error
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import jp.gr.java_conf.alpherg0221.compose.material.AppDivider
+import jp.gr.java_conf.alpherg0221.compose.material.InsetAwareTopAppBar
+import jp.gr.java_conf.alpherg0221.compose.material.PreferencesItem
+import jp.gr.java_conf.alpherg0221.compose.material.PreferencesTitle
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.AppTheme
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.ClassTime

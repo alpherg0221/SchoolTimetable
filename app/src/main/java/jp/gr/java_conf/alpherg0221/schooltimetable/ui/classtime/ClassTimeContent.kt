@@ -20,9 +20,9 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import jp.gr.java_conf.alpherg0221.compose.material.InsetAwareTopAppBar
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.PeriodType
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.InsetAwareTopAppBar
 import jp.gr.java_conf.alpherg0221.schooltimetable.utils.toLongString
 
 @Composable

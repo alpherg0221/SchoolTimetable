@@ -9,11 +9,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import jp.gr.java_conf.alpherg0221.compose.material.BottomSheetLayout
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.AppTheme
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.DayOfWeekType
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.PeriodType
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.BottomSheetLayout
 import jp.gr.java_conf.alpherg0221.schooltimetable.utils.toLongString
 
 @Composable

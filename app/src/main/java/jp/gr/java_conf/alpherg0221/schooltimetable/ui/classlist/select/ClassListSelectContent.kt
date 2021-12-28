@@ -9,11 +9,11 @@ import androidx.compose.material.icons.rounded.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import jp.gr.java_conf.alpherg0221.compose.material.AppDivider
+import jp.gr.java_conf.alpherg0221.compose.material.InsetAwareTopAppBar
+import jp.gr.java_conf.alpherg0221.compose.material.PreferencesItem
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.ClassInfo
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.AppDivider
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.InsetAwareTopAppBar
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.PreferencesItem
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

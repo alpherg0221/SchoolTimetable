@@ -15,11 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import jp.gr.java_conf.alpherg0221.compose.material.BottomSheetLayout
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.BottomSheetLayout
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.theme.ColorList
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.theme.ColorValueList
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.theme.OnColorList

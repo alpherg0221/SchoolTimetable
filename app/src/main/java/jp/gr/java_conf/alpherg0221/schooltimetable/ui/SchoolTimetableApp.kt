@@ -1,5 +1,6 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.*
@@ -13,7 +14,6 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import jp.gr.java_conf.alpherg0221.schooltimetable.model.AppTheme
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.AppContainer
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.BackHandler
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.theme.SchoolTimetableTheme
 import kotlinx.coroutines.launch
 

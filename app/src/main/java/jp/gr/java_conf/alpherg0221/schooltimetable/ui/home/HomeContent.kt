@@ -1,5 +1,6 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui.home
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import jp.gr.java_conf.alpherg0221.compose.material.InsetAwareTopAppBar
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.ClassTime
 import jp.gr.java_conf.alpherg0221.schooltimetable.data.room.TableWithClassInfo

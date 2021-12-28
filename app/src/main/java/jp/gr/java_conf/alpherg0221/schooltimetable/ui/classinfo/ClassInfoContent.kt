@@ -1,5 +1,6 @@
 package jp.gr.java_conf.alpherg0221.schooltimetable.ui.classinfo
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -25,10 +26,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import jp.gr.java_conf.alpherg0221.compose.material.InsetAwareTopAppBar
 import jp.gr.java_conf.alpherg0221.schooltimetable.R
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.BackHandler
 import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.ColorSurface
-import jp.gr.java_conf.alpherg0221.schooltimetable.ui.components.InsetAwareTopAppBar
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
